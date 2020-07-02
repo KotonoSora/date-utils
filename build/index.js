@@ -5465,7 +5465,6 @@ return XDate;
     weekdaysOrder["FRIDAY"] = "FRIDAY";
     weekdaysOrder["SATURDAY"] = "SATURDAY";
 })(exports.weekdaysOrder || (exports.weekdaysOrder = {}));
-// 0: sunday, 1: monday, ...
 function getWeekdays(startDateOfWeek) {
     if (startDateOfWeek === void 0) { startDateOfWeek = 1; }
     var weekDaysNames = [
@@ -5479,53 +5478,10 @@ function getWeekdays(startDateOfWeek) {
     ];
     var dayShift = startDateOfWeek % 7;
     if (dayShift) {
-        weekDaysNames = weekDaysNames
-            .slice(dayShift)
-            .concat(weekDaysNames.slice(0, dayShift));
+        weekDaysNames = weekDaysNames.slice(dayShift).concat(weekDaysNames.slice(0, dayShift));
     }
     return weekDaysNames;
 }
-/**
- *
- * @param containedDate the instance of moment
- * @returns An Object contain 2 instance of moment, startDate is start date of week, endDate is end date of week
- */
-// export function getWeekRange(containedDate: moment.Moment) {
-//   // change 'isoWeek' to 'week' if start week from sunday
-//   let startDate = containedDate.clone().startOf("isoWeek");
-//   let endDate = containedDate.clone().endOf("isoWeek");
-//   let range = {
-//     startDate,
-//     endDate,
-//   };
-//   return range;
-// }
-/**
- *
- * @param containedDate the instance of moment
- * @returns An Object contain 2 instance of moment, startDate is start date of display calendar, endDate is end date of display calendar
- */
-// return the display range date in calendar include day whose color are grayed
-// export function getRangeOfCalendar(containedDate: moment.Moment) {
-//   // get month range
-//   let monthRange = 1;
-//   //StartDate.getDurationTimeMonthContainDate(containedDate);
-//   // get range of first week
-//   let firstWeekOfMonthRange = 1;
-//   //getWeekRange(monthRange.startDate);
-//   // get range of last week
-//   let lastWeekOfMonthRange = 1;
-//   //getWeekRange(monthRange.endDate);
-//   // get first date of first week and last date of last week
-//   let startDate = 1;
-//   //firstWeekOfMonthRange.startDate;
-//   let endDate = 1;
-//   //lastWeekOfMonthRange.endDate;
-//   return {
-//     startDate,
-//     endDate,
-//   };
-// }
 function numberDayOfMonthYear(month, year) {
     if (month == 2) {
         if (isLeapYear(year))
@@ -5557,42 +5513,32 @@ function isLeapYear(year) {
 }
 function getStringFromDate(date, format) {
     if (date == null || date == undefined) {
-        return "";
+        return '';
     }
-    if (format != "") {
+    if (format != '') {
         return date.format(format);
     }
-    return date.format("YYYY-MM-DD HH:mm:ss");
+    return date.format('YYYY-MM-DD HH:mm:ss');
 }
 /**
  * Copy function from qmk
  *
  * @since     MoneyReco ReactNative Beta 1
  */
-var SUNDAY = "SUNDAY";
-var MONDAY = "MONDAY";
-var TUESDAY = "TUESDAY";
-var WEDNESDAY = "WEDNESDAY";
-var THURSDAY = "THURSDAY";
-var FRIDAY = "FRIDAY";
-var SATURDAY = "SATURDAY";
-var dayOfWeekOrder = [
-    SUNDAY,
-    MONDAY,
-    TUESDAY,
-    WEDNESDAY,
-    THURSDAY,
-    FRIDAY,
-    SATURDAY,
-];
+var SUNDAY = 'SUNDAY';
+var MONDAY = 'MONDAY';
+var TUESDAY = 'TUESDAY';
+var WEDNESDAY = 'WEDNESDAY';
+var THURSDAY = 'THURSDAY';
+var FRIDAY = 'FRIDAY';
+var SATURDAY = 'SATURDAY';
+var dayOfWeekOrder = [SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY];
 function weekDayNames(firstDayOfWeek) {
     if (firstDayOfWeek === void 0) { firstDayOfWeek = 0; }
     var weekDaysNames = dayOfWeekOrder;
     var dayShift = firstDayOfWeek % 7;
     if (dayShift) {
-        weekDaysNames = weekDaysNames
-            .slice(dayShift)
-            .concat(weekDaysNames.slice(0, dayShift));
+        weekDaysNames = weekDaysNames.slice(dayShift).concat(weekDaysNames.slice(0, dayShift));
     }
     return weekDaysNames;
 }
@@ -5624,15 +5570,6 @@ function fromTo(a, b) {
     }
     return days;
 }
-// function xdFromTo(a: any, b: any) {
-//   const days: Date[] = [];
-//   let from = +a,
-//     to = +b;
-//   for (; from <= to; from = new XDate(from, true).addDays(1).getTime()) {
-//     days.push(new XDate(from, true).toDate());
-//   }
-//   return days;
-// }
 function isGTE(a, b) {
     return b.diffDays(a) > -1;
 }
@@ -5665,15 +5602,13 @@ function week(date, firstDayOfWeek) {
     return before.concat(after.slice(1));
 }
 function getDaysOfMonth(initDate, monthStartDate, monthStartDateAction, holidayData) {
-    // console.log('DateBar... getDaysOfMonth...');
     if (holidayData === void 0) { holidayData = []; }
     var _a = setFirstAndLastDay(initDate, monthStartDate, monthStartDateAction, holidayData), firstDay = _a.firstDay, lastDay = _a.lastDay;
     return fromTo(firstDay, lastDay);
 }
 function checkHoliday(date, holidayData) {
     if (holidayData === void 0) { holidayData = []; }
-    //@ts-ignore
-    return holidayData.includes(date.clone().toString("yyyy-MM-dd"));
+    return holidayData.includes(date.clone().toString('yyyy-MM-dd'));
 }
 function getFirstDayOfMonth(date, monthStartDateAction, holidayData) {
     if (monthStartDateAction === void 0) { monthStartDateAction = exports.MonthlyStartDateAction.NoChange; }
@@ -5724,11 +5659,11 @@ function setFirstDay(initDate, monthStartDate, monthStartDateAction, holidayData
     var firstDay = xd.clone();
     if (monthStartDate >= 32) {
         //month start date is last day of month
-        var timexd = xd.clone().toString("yyyy-MM-dd");
+        var timexd = xd.clone().toString('yyyy-MM-dd');
         var endOfBeforeMonth = moment(timexd)
-            .add(-1, "month")
-            .endOf("month")
-            .format("YYYY-MM-DD");
+            .add(-1, 'month')
+            .endOf('month')
+            .format('YYYY-MM-DD');
         firstDay = new xdate(endOfBeforeMonth, true);
     }
     else {
@@ -5748,7 +5683,10 @@ function setFirstDay(initDate, monthStartDate, monthStartDateAction, holidayData
 function setFirstAndLastDay(initDate, monthStartDate, monthStartDateAction, holidayData) {
     if (holidayData === void 0) { holidayData = []; }
     var firstDay = setFirstDay(initDate, monthStartDate, monthStartDateAction, holidayData);
-    var firstDayNextMonth = setFirstDay(firstDay.clone().addMonths(1).toString("yyyy-MM-dd"), monthStartDate, monthStartDateAction, holidayData);
+    var firstDayNextMonth = setFirstDay(firstDay
+        .clone()
+        .addMonths(1)
+        .toString('yyyy-MM-dd'), monthStartDate, monthStartDateAction, holidayData);
     var lastDay = firstDayNextMonth.clone().addDays(-1);
     return { firstDay: firstDay, lastDay: lastDay };
 }
@@ -5766,7 +5704,6 @@ function lastDayOfMonthFromDate(date) {
 function page(firstDayOfWeek, fromDate, toDate) {
     if (firstDayOfWeek === void 0) { firstDayOfWeek = 1; }
     firstDayOfWeek = firstDayOfWeek || 0;
-    // console.log('DateBar... page', firstDayOfWeek, fromDate, toDate);
     var days = fromTo(new xdate(fromDate, true), new xdate(toDate, true));
     var before = [];
     var after = [];
@@ -5815,13 +5752,13 @@ function pageWeek(initDate, firstDayOfWeek) {
     return before.concat(after.splice(1, after.length));
 }
 function getKeyMonthFromToDate(initDate, monthStartDate, monthStartDateAction, holidayData) {
-    if (initDate === void 0) { initDate = new xdate().toString("yyyy-MM-dd"); }
+    if (initDate === void 0) { initDate = new xdate().toString('yyyy-MM-dd'); }
     if (monthStartDate === void 0) { monthStartDate = 1; }
     if (monthStartDateAction === void 0) { monthStartDateAction = exports.MonthlyStartDateAction.NoChange; }
     if (holidayData === void 0) { holidayData = []; }
     var _a = setFirstAndLastDay(initDate, monthStartDate, monthStartDateAction, holidayData), firstDay = _a.firstDay, lastDay = _a.lastDay;
-    var fromDate = firstDay.toString("yyyy-MM-dd");
-    var toDate = lastDay.toString("yyyy-MM-dd");
+    var fromDate = firstDay.toString('yyyy-MM-dd');
+    var toDate = lastDay.toString('yyyy-MM-dd');
     var keyMonth = fromDate + "-" + toDate;
     return {
         keyMonth: keyMonth,
@@ -5839,15 +5776,15 @@ function parseDate(d) {
     }
     else if (d instanceof xdate) {
         // xdate
-        return new xdate(d.toString("yyyy-MM-dd"), true);
+        return new xdate(d.toString('yyyy-MM-dd'), true);
     }
     else if (d.getTime) {
         // javascript date
-        var dateString = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+        var dateString = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
         return new xdate(dateString, true);
     }
     else if (d.year) {
-        var dateString = d.year + "-" + d.month + "-" + d.day;
+        var dateString = d.year + '-' + d.month + '-' + d.day;
         return new xdate(dateString, true);
     }
     else if (d) {
@@ -5867,16 +5804,13 @@ function sameDate(a, b) {
 function sameMonth(a, b) {
     a = a instanceof Date ? new xdate(a, true) : a;
     b = b instanceof Date ? new xdate(b, true) : b;
-    return (a instanceof xdate &&
-        b instanceof xdate &&
-        a.getFullYear() === b.getFullYear() &&
-        a.getMonth() === b.getMonth());
+    return (a instanceof xdate && b instanceof xdate && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth());
 }
 function getWeekKey(date, firstDayOfWeek) {
     if (firstDayOfWeek === void 0) { firstDayOfWeek = 1; }
     var weekDays = getWeek(date, firstDayOfWeek);
-    var fromWeek = new xdate(weekDays.from, true).toString("yyyy/MM/dd");
-    var toWeek = new xdate(weekDays.to, true).toString("MM/dd");
+    var fromWeek = new xdate(weekDays.from, true).toString('yyyy/MM/dd');
+    var toWeek = new xdate(weekDays.to, true).toString('MM/dd');
     return fromWeek + " - " + toWeek;
 }
 function countDateOfMonth(year, month) {
@@ -5900,7 +5834,7 @@ function getDaysFromDateToDate(dateFrom, dateTo) {
     return days;
 }
 function parseToXDate(time) {
-    if (typeof time === "string") {
+    if (typeof time === 'string') {
         return new xdate(time, true);
     }
     else {
@@ -5908,7 +5842,7 @@ function parseToXDate(time) {
     }
 }
 function parseToMoment(time) {
-    if (typeof time === "string") {
+    if (typeof time === 'string') {
         return moment(time);
     }
     else {
@@ -5936,6 +5870,7 @@ exports.checkHoliday = checkHoliday;
 exports.countDateOfMonth = countDateOfMonth;
 exports.dayOfWeekOrder = dayOfWeekOrder;
 exports.firstDayOfMonthFromDate = firstDayOfMonthFromDate;
+exports.fromTo = fromTo;
 exports.getDaysFromDateToDate = getDaysFromDateToDate;
 exports.getDaysOfMonth = getDaysOfMonth;
 exports.getFirstDayOfMonth = getFirstDayOfMonth;

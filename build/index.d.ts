@@ -1,5 +1,5 @@
-import moment from "moment";
-import XDate from "xdate";
+import moment from 'moment';
+import XDate from 'xdate';
 export declare enum MonthlyStartDateAction {
     NoChange = "NoChange",
     Previous = "Previous",
@@ -15,16 +15,6 @@ export declare enum weekdaysOrder {
     SATURDAY = "SATURDAY"
 }
 export declare function getWeekdays(startDateOfWeek?: number): weekdaysOrder[];
-/**
- *
- * @param containedDate the instance of moment
- * @returns An Object contain 2 instance of moment, startDate is start date of week, endDate is end date of week
- */
-/**
- *
- * @param containedDate the instance of moment
- * @returns An Object contain 2 instance of moment, startDate is start date of display calendar, endDate is end date of display calendar
- */
 export declare function numberDayOfMonthYear(month: number, year: number): 29 | 28 | 30 | 31;
 export declare function isLeapYear(year: number): boolean;
 export declare function getStringFromDate(date?: moment.Moment, format?: string): string;
@@ -46,6 +36,7 @@ export declare function getWeek(date: any, firstDayOfWeek?: number): {
     from: Date;
     to: Date;
 };
+export declare function fromTo(a: any, b: any): Date[];
 export declare function isGTE(a: any, b: any): boolean;
 export declare function isLTE(a: any, b: any): boolean;
 export declare function week(date: any, firstDayOfWeek?: number): Date[];

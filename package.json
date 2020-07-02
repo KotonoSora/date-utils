@@ -1,49 +1,49 @@
 {
-  "name": "@kotonosora-tech/date-utils",
-  "version": "1.0.1",
-  "description": "",
-  "main": "build/index.js",
-  "module": "build/index.es.js",
-  "jsnext:main": "build/index.es.js",
-  "scripts": {
-    "build": "rollup -c",
-    "format": "prettier-standard --format",
-    "lint": "standard",
-    "test": "jest --coverage",
-    "log-test": "open coverage/lcov-report/index.html"
-  },
-  "author": "kotonosora <duythang.2912@kotonosora.com>",
-  "license": "MIT",
-  "dependencies": {
-    "moment": "2.24.0",
-    "xdate": "0.8.2"
-  },
-  "devDependencies": {
-    "@types/jest": "^26.0.3",
-    "@types/xdate": "0.8.30",
-    "jest": "^26.1.0",
-    "prettier-standard": "^16.3.0",
-    "rollup": "^2.18.1",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.3",
-    "rollup-plugin-typescript2": "^0.27.1",
-    "standard": "^14.3.4",
-    "standard-prettier": "^1.0.1",
-    "ts-jest": "^26.1.1",
-    "typescript": "^3.9.6"
-  },
-  "files": [
-    "build"
-  ],
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node"
-  },
-  "standard": {
-    "ignore": [
-      "node_modules/",
-      "build/"
-    ]
-  }
+	"name": "@kotonosora-tech/date-utils",
+	"version": "1.0.1",
+	"description": "",
+	"main": "build/index.js",
+	"module": "build/index.es.js",
+	"jsnext:main": "build/index.es.js",
+	"scripts": {
+		"build": "rollup -c",
+		"format": "prettier-standard --format",
+		"lint": "standard",
+		"test": "jest --coverage",
+		"log-test": "open coverage/lcov-report/index.html"
+	},
+	"author": "kotonosora <duythang.2912@kotonosora.com>",
+	"license": "MIT",
+	"dependencies": {
+		"moment": "2.24.0",
+		"xdate": "0.8.2"
+	},
+	"devDependencies": {
+		"@types/jest": "^26.0.3",
+		"@types/xdate": "0.8.30",
+		"jest": "^26.1.0",
+		"prettier-standard": "^16.3.0",
+		"rollup": "^2.18.1",
+		"rollup-plugin-commonjs": "^10.1.0",
+		"rollup-plugin-node-resolve": "^5.2.0",
+		"rollup-plugin-peer-deps-external": "^2.2.3",
+		"rollup-plugin-typescript2": "^0.27.1",
+		"standard": "^14.3.4",
+		"standard-prettier": "^1.0.1",
+		"ts-jest": "^26.1.1",
+		"typescript": "^3.9.6"
+	},
+	"files": [
+		"build"
+	],
+	"jest": {
+		"preset": "ts-jest",
+		"testEnvironment": "node"
+	},
+	"standard": {
+		"ignore": [
+			"node_modules/",
+			"build/"
+		]
+	}
 }
