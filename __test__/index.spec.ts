@@ -50,12 +50,18 @@
 //     if (err) console.log(err);
 // })
 
-const {sameMonth} = require('../index');
+import { sameMonth } from '../src/index'
 
 test('is same month', () => {
-  expect(sameMonth(new Date('2020-01-01'), new Date('2020-01-01'))).toBe(true);
-});
+  expect(sameMonth(new Date('2020-01-01'), new Date('2020-01-01'))).toBe(true)
+})
 
 test('not same month', () => {
-  expect(sameMonth(new Date('2020-02-01'), new Date('2020-01-01'))).toBe(false);
-});
+  expect(sameMonth(new Date('2020-02-01'), new Date('2020-01-01'))).toBe(false)
+})
+
+import { sum } from '../src/index'
+
+test('Sum 4 + 5 = 9', () => {
+  expect(sum(4, 5)).toBe(9)
+})

@@ -1,3 +1,2 @@
 /node_modules
-*.js
-__test__/*.js
+/coverage
