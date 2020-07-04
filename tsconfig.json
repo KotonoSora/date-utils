@@ -9,7 +9,7 @@
 		"declaration": true,
 		"moduleResolution": "node",
 		"forceConsistentCasingInFileNames": true,
-		"noImplicitReturns": false,
+		"noImplicitReturns": true,
 		"noImplicitThis": true,
 		"noImplicitAny": true,
 		"strictNullChecks": true,
@@ -19,5 +19,5 @@
 		"esModuleInterop": true
 	},
 	"include": ["src"],
-	"exclude": ["node_modules", "build"]
+	"exclude": ["node_modules", "build", "__test__"]
 }
