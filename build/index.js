@@ -4617,7 +4617,7 @@ function getListDate(fromDate, toDate) {
     var from = moment.utc(fromDate);
     var to = moment.utc(toDate);
     for (; from <= to; from = moment.utc(from).add(1, 'days')) {
-        days.push(from);
+        days.push(from.format('YYYY-MM-DD'));
     }
     return days;
 }
@@ -4639,3 +4639,5 @@ var index = {
 };
 
 exports.default = index;
+exports.getKeyMonth = getKeyMonth;
+exports.getListDate = getListDate;
