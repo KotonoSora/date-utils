@@ -8,13 +8,20 @@ interface IProps {
 	holidayData: string[];
 }
 
-export default function getKeyMonth (props: IProps): string {
+export interface IKeymonth {
+	keyMonth: string;
+	firstDate: string;
+	lastDate: string;
+}
+
+export default function getKeyMonth (props: IProps): IKeymonth {
 	const firstDate = moment(props.initDate)
 		.set('date', props.monthStartDate)
 		.format('YYYY-MM-DD');
 	const lastDate = moment(firstDate)
-		.endOf('month')
+		.add(1, 'month')
+		.add(-1, 'day')
 		.format('YYYY-MM-DD');
 	const keyMonth: string = firstDate + '-' + lastDate;
-	return keyMonth;
+	return {keyMonth, firstDate, lastDate};
 }

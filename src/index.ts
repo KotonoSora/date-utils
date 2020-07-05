@@ -1,9 +1,4 @@
 import getListDate from './getListDate';
-import getKeyMonth from './getKeyMonth';
+import getKeyMonth, {IKeymonth} from './getKeyMonth';
 
-export default {
-	getListDate,
-	getKeyMonth,
-};
-
-export {getListDate, getKeyMonth};
+export {getListDate, getKeyMonth, IKeymonth};

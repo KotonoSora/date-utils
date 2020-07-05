@@ -4627,17 +4627,12 @@ function getKeyMonth(props) {
         .set('date', props.monthStartDate)
         .format('YYYY-MM-DD');
     var lastDate = moment(firstDate)
-        .endOf('month')
+        .add(1, 'month')
+        .add(-1, 'day')
         .format('YYYY-MM-DD');
     var keyMonth = firstDate + '-' + lastDate;
-    return keyMonth;
+    return { keyMonth: keyMonth, firstDate: firstDate, lastDate: lastDate };
 }
 
-var index = {
-    getListDate: getListDate,
-    getKeyMonth: getKeyMonth,
-};
-
-exports.default = index;
 exports.getKeyMonth = getKeyMonth;
 exports.getListDate = getListDate;
