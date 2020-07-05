@@ -1,6 +1,6 @@
 {
 	"name": "@kotonosora-tech/date-utils",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "",
 	"main": "build/index.js",
 	"module": "build/index.es.js",
@@ -9,7 +9,8 @@
 		"build": "rollup -c",
 		"format": "prettier-standard --format",
 		"lint": "standard",
-		"test": "jest --coverage",
+		"test": "jest",
+		"test-write-log": "jest --coverage",
 		"log-test": "open coverage/lcov-report/index.html"
 	},
 	"author": "kotonosora <duythang.2912@kotonosora.com>",

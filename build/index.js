@@ -4622,17 +4622,58 @@ function getListDate(fromDate, toDate) {
     return days;
 }
 
-function getKeyMonth(props) {
-    var firstDate = moment(props.initDate)
-        .set('date', props.monthStartDate)
-        .format('YYYY-MM-DD');
-    var lastDate = moment(firstDate)
-        .add(1, 'month')
-        .add(-1, 'day')
-        .format('YYYY-MM-DD');
-    var keyMonth = firstDate + '-' + lastDate;
-    return { keyMonth: keyMonth, firstDate: firstDate, lastDate: lastDate };
+function getMaxDay(date) {
+    var month = moment.utc(date).get('month');
+    switch (month) {
+        case 2:
+            if (moment.utc(date).isLeapYear())
+                return 29;
+            return 28;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            return 30;
+        default:
+            return 31;
+    }
 }
+
+function getKeyMonth(props) {
+    var initDate = moment.utc(props.initDate);
+    var firstDate = initDate.clone();
+    var lastDate = initDate.clone();
+    if (props.monthStartDate >= 32) {
+        firstDate.add(-1, 'month').endOf('month');
+        lastDate = firstDate.clone().add(1, 'month');
+    }
+    else {
+        if (initDate.get('date') < props.monthStartDate) {
+            firstDate.add(-1, 'month');
+        }
+        var maxDayOfMonth = getMaxDay(initDate.format('YYYY-MM-DD'));
+        if (props.monthStartDate > maxDayOfMonth) {
+            firstDate.set('date', maxDayOfMonth);
+            lastDate = firstDate.clone().add(1, 'month');
+        }
+        else {
+            firstDate.set('date', props.monthStartDate);
+            lastDate = firstDate
+                .clone()
+                .add(1, 'month')
+                .add(-1, 'day');
+        }
+    }
+    var keyMonth = firstDate.format('YYYY-MM-DD') + '-' + lastDate.format('YYYY-MM-DD');
+    return { keyMonth: keyMonth, firstDate: firstDate.format('YYYY-MM-DD'), lastDate: lastDate.format('YYYY-MM-DD') };
+}
+
+(function (START_DATE_ACTION) {
+    START_DATE_ACTION["NO_CHANGE"] = "NO_CHANGE";
+    START_DATE_ACTION["PREVIOUS"] = "PREVIOUS";
+    START_DATE_ACTION["NEXT_WEEK"] = "NEXT_WEEK";
+})(exports.START_DATE_ACTION || (exports.START_DATE_ACTION = {}));
 
 exports.getKeyMonth = getKeyMonth;
 exports.getListDate = getListDate;
+exports.getMaxDay = getMaxDay;
