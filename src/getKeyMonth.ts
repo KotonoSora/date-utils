@@ -1,6 +1,5 @@
 import moment from 'moment';
-import {START_DATE_ACTION} from './constants';
-import getMaxDay from './getMaxDay';
+import { START_DATE_ACTION } from './constants';
 
 export interface IProps {
 	initDate: string;
@@ -23,12 +22,12 @@ export default function getKeyMonth (props: IProps): IKeymonth {
 		firstDate.add(-1, 'month').endOf('month');
 		lastDate = firstDate.clone().add(1, 'month');
 	} else {
-		if (initDate.get('date') < props.monthStartDate) {
+		if (initDate.clone().get('date') < props.monthStartDate) {
 			firstDate.add(-1, 'month');
 		}
-		const maxDayOfMonth = getMaxDay(initDate.format('YYYY-MM-DD'));
+		const maxDayOfMonth = firstDate.clone().endOf('month').get('date');
 		if (props.monthStartDate > maxDayOfMonth) {
-			firstDate.set('date', maxDayOfMonth);
+			firstDate.endOf('month');
 			lastDate = firstDate.clone().add(1, 'month');
 		} else {
 			firstDate.set('date', props.monthStartDate);
@@ -38,6 +37,11 @@ export default function getKeyMonth (props: IProps): IKeymonth {
 				.add(-1, 'day');
 		}
 	}
-	const keyMonth: string = firstDate.format('YYYY-MM-DD') + '-' + lastDate.format('YYYY-MM-DD');
-	return {keyMonth, firstDate: firstDate.format('YYYY-MM-DD'), lastDate: lastDate.format('YYYY-MM-DD')};
+	const keyMonth: string =
+		firstDate.format('YYYY-MM-DD') + '-' + lastDate.format('YYYY-MM-DD');
+	return {
+		keyMonth,
+		firstDate: firstDate.format('YYYY-MM-DD'),
+		lastDate: lastDate.format('YYYY-MM-DD')
+	};
 }

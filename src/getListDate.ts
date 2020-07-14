@@ -1,6 +1,9 @@
-import moment, {Moment} from 'moment';
+import moment, { Moment } from 'moment';
 
-export default function getListDate (fromDate: string, toDate: string): string[] {
+export default function getListDate (
+	fromDate: string,
+	toDate: string
+): string[] {
 	const days: string[] = [];
 	let from: Moment = moment.utc(fromDate);
 	let to: Moment = moment.utc(toDate);

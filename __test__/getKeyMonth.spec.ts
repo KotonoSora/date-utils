@@ -1,11 +1,11 @@
-import {getKeyMonth, getListDate, IKeymonth, START_DATE_ACTION} from '../src/index';
+import { getKeyMonth, IKeymonth, START_DATE_ACTION } from '../src';
 
 describe('getKeyMonth initDate 2020-07-01 NO_CHANGE', () => {
 	let param = {
 		initDate: '2020-07-01',
 		monthStartDate: 1,
 		monthStartDateAction: START_DATE_ACTION.NO_CHANGE,
-		holidayData: [],
+		holidayData: []
 	};
 	test('monthStartDate 1', () => {
 		param.monthStartDate = 1;
@@ -13,7 +13,7 @@ describe('getKeyMonth initDate 2020-07-01 NO_CHANGE', () => {
 		expect(data).toEqual({
 			keyMonth: '2020-07-01-2020-07-31',
 			firstDate: '2020-07-01',
-			lastDate: '2020-07-31',
+			lastDate: '2020-07-31'
 		});
 	});
 	test('monthStartDate 2', () => {
@@ -22,7 +22,7 @@ describe('getKeyMonth initDate 2020-07-01 NO_CHANGE', () => {
 		expect(data).toEqual({
 			keyMonth: '2020-06-02-2020-07-01',
 			firstDate: '2020-06-02',
-			lastDate: '2020-07-01',
+			lastDate: '2020-07-01'
 		});
 	});
 	test('monthStartDate 3', () => {
@@ -31,7 +31,7 @@ describe('getKeyMonth initDate 2020-07-01 NO_CHANGE', () => {
 		expect(data).toEqual({
 			keyMonth: '2020-06-03-2020-07-02',
 			firstDate: '2020-06-03',
-			lastDate: '2020-07-02',
+			lastDate: '2020-07-02'
 		});
 	});
 	test('monthStartDate 10', () => {
@@ -40,7 +40,7 @@ describe('getKeyMonth initDate 2020-07-01 NO_CHANGE', () => {
 		expect(data).toEqual({
 			keyMonth: '2020-06-10-2020-07-09',
 			firstDate: '2020-06-10',
-			lastDate: '2020-07-09',
+			lastDate: '2020-07-09'
 		});
 	});
 	test('monthStartDate 27', () => {
@@ -49,7 +49,7 @@ describe('getKeyMonth initDate 2020-07-01 NO_CHANGE', () => {
 		expect(data).toEqual({
 			keyMonth: '2020-06-27-2020-07-26',
 			firstDate: '2020-06-27',
-			lastDate: '2020-07-26',
+			lastDate: '2020-07-26'
 		});
 	});
 	test('monthStartDate 28', () => {
@@ -58,7 +58,7 @@ describe('getKeyMonth initDate 2020-07-01 NO_CHANGE', () => {
 		expect(data).toEqual({
 			keyMonth: '2020-06-28-2020-07-27',
 			firstDate: '2020-06-28',
-			lastDate: '2020-07-27',
+			lastDate: '2020-07-27'
 		});
 	});
 	test('monthStartDate 29', () => {
@@ -67,7 +67,7 @@ describe('getKeyMonth initDate 2020-07-01 NO_CHANGE', () => {
 		expect(data).toEqual({
 			keyMonth: '2020-06-29-2020-07-28',
 			firstDate: '2020-06-29',
-			lastDate: '2020-07-28',
+			lastDate: '2020-07-28'
 		});
 	});
 	test('monthStartDate 30', () => {
@@ -76,7 +76,7 @@ describe('getKeyMonth initDate 2020-07-01 NO_CHANGE', () => {
 		expect(data).toEqual({
 			keyMonth: '2020-06-30-2020-07-29',
 			firstDate: '2020-06-30',
-			lastDate: '2020-07-29',
+			lastDate: '2020-07-29'
 		});
 	});
 	test('monthStartDate 31', () => {
@@ -85,7 +85,7 @@ describe('getKeyMonth initDate 2020-07-01 NO_CHANGE', () => {
 		expect(data).toEqual({
 			keyMonth: '2020-06-30-2020-07-30',
 			firstDate: '2020-06-30',
-			lastDate: '2020-07-30',
+			lastDate: '2020-07-30'
 		});
 	});
 	test('monthStartDate 32', () => {
@@ -94,15 +94,7 @@ describe('getKeyMonth initDate 2020-07-01 NO_CHANGE', () => {
 		expect(data).toEqual({
 			keyMonth: '2020-06-30-2020-07-30',
 			firstDate: '2020-06-30',
-			lastDate: '2020-07-30',
+			lastDate: '2020-07-30'
 		});
-	});
-});
-
-describe('getListDate', () => {
-	test('should return the correct array', () => {
-		let data: string[] = getListDate('2020-07-01', '2020-07-05');
-		let result = ['2020-07-01', '2020-07-02', '2020-07-03', '2020-07-04', '2020-07-05'];
-		expect(data).toEqual(result);
 	});
 });

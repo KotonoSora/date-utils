@@ -12,8 +12,8 @@ export default {
 			file: pkg.main,
 			format: 'cjs',
 			exports: 'named',
-			sourcemap: false,
-		},
+			sourcemap: false
+		}
 	],
 	plugins: [
 		external(),
@@ -21,10 +21,10 @@ export default {
 		typescript({
 			rollupCommonJSResolveHack: true,
 			exclude: '**/__tests__/**',
-			clean: true,
+			clean: true
 		}),
 		commonjs({
-			include: ['node_modules/**'],
-		}),
-	],
+			include: ['node_modules/**']
+		})
+	]
 };

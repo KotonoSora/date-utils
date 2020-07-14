@@ -8,7 +8,7 @@ export interface IPageMonth {
 	toDate: string;
 }
 
-export default function getPageMonth(props: IPageMonth): string[] {
+export default function getPageMonth (props: IPageMonth): string[] {
 	let { firstDayOfWeek, fromDate, toDate } = props;
 	let listDate: string[] = getListDate(fromDate, toDate);
 	const from: Moment = moment.utc(listDate[0]);
