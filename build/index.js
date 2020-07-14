@@ -4668,43 +4668,6 @@ function getKeyMonth(props) {
     return { keyMonth: keyMonth, firstDate: firstDate.format('YYYY-MM-DD'), lastDate: lastDate.format('YYYY-MM-DD') };
 }
 
-function isGTE(a, b) {
-    return b.diff(a, 'day') > -1;
-}
-function isLTE(a, b) {
-    return a.diff(b, 'day') > -1;
-}
-function getPageMonth(props) {
-    var firstDayOfWeek = props.firstDayOfWeek, fromDate = props.fromDate, toDate = props.toDate;
-    firstDayOfWeek = firstDayOfWeek || 0;
-    var listDate = getListDate(fromDate, toDate);
-    var before = [];
-    var after = [];
-    var fdow = (7 + firstDayOfWeek) % 7 || 7;
-    var ldow = (fdow + 6) % 7;
-    var from = moment.utc(listDate[0]);
-    var dayFrom = from.get('date');
-    if (dayFrom !== fdow) {
-        var addDate = -(dayFrom + 7 - fdow) % 7;
-        from.add(addDate, 'day');
-        console.log('dayFrom addDate', addDate, from.format('YYYY-MM-DD'));
-    }
-    var to = moment.utc(listDate[listDate.length - 1]);
-    var dayTo = to.get('date');
-    if (dayTo !== ldow) {
-        var addDate = (ldow + 7 - dayTo) % 7;
-        to.add(addDate, 'day');
-        console.log('dayTo addDate', addDate, to.format('YYYY-MM-DD'));
-    }
-    if ((isLTE(from, moment.utc(listDate[0])), true)) {
-        before = getListDate(from.format('YYYY-MM-DD'), listDate[0]);
-    }
-    if ((isGTE(to, moment.utc(listDate[listDate.length - 1])), true)) {
-        after = getListDate(listDate[listDate.length - 1], to.format('YYYY-MM-DD'));
-    }
-    return before.concat(listDate.slice(1, listDate.length - 1), after);
-}
-
 (function (START_DATE_ACTION) {
     START_DATE_ACTION["NO_CHANGE"] = "NO_CHANGE";
     START_DATE_ACTION["PREVIOUS"] = "PREVIOUS";
@@ -4714,6 +4677,24 @@ function getPageMonth(props) {
     FIRST_DAY_OF_WEEK[FIRST_DAY_OF_WEEK["SUNDAY"] = 0] = "SUNDAY";
     FIRST_DAY_OF_WEEK[FIRST_DAY_OF_WEEK["MONDAY"] = 1] = "MONDAY";
 })(exports.FIRST_DAY_OF_WEEK || (exports.FIRST_DAY_OF_WEEK = {}));
+
+function getPageMonth(props) {
+    var firstDayOfWeek = props.firstDayOfWeek, fromDate = props.fromDate, toDate = props.toDate;
+    var listDate = getListDate(fromDate, toDate);
+    var from = moment.utc(listDate[0]);
+    var to = moment.utc(listDate[listDate.length - 1]);
+    switch (firstDayOfWeek) {
+        case exports.FIRST_DAY_OF_WEEK.MONDAY:
+            from.startOf('isoWeek');
+            to.endOf('isoWeek');
+            break;
+        case exports.FIRST_DAY_OF_WEEK.SUNDAY:
+            from.startOf('week');
+            to.endOf('week');
+            break;
+    }
+    return getListDate(from.format('YYYY-MM-DD'), to.format('YYYY-MM-DD'));
+}
 
 exports.getKeyMonth = getKeyMonth;
 exports.getListDate = getListDate;
