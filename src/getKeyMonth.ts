@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { START_DATE_ACTION } from './constants';
 
-export interface IProps {
+export interface IGetKeyMonth {
 	initDate: string;
 	monthStartDate: number;
 	monthStartDateAction: START_DATE_ACTION;
@@ -14,7 +14,8 @@ export interface IKeymonth {
 	lastDate: string;
 }
 
-export default function getKeyMonth (props: IProps): IKeymonth {
+export default function getKeyMonth (props: IGetKeyMonth): IKeymonth {
+	console.log('=== START ===', { props });
 	const initDate = moment.utc(props.initDate);
 	let firstDate = initDate.clone();
 	let lastDate = initDate.clone();
@@ -25,7 +26,10 @@ export default function getKeyMonth (props: IProps): IKeymonth {
 		if (initDate.clone().get('date') < props.monthStartDate) {
 			firstDate.add(-1, 'month');
 		}
-		const maxDayOfMonth = firstDate.clone().endOf('month').get('date');
+		const maxDayOfMonth = firstDate
+			.clone()
+			.endOf('month')
+			.get('date');
 		if (props.monthStartDate > maxDayOfMonth) {
 			firstDate.endOf('month');
 			lastDate = firstDate.clone().add(1, 'month');
@@ -37,8 +41,10 @@ export default function getKeyMonth (props: IProps): IKeymonth {
 				.add(-1, 'day');
 		}
 	}
-	const keyMonth: string =
-		firstDate.format('YYYY-MM-DD') + '-' + lastDate.format('YYYY-MM-DD');
+	let keyMonth: string = firstDate.format('YYYY-MM-DD');
+	keyMonth += '-';
+	keyMonth += lastDate.format('YYYY-MM-DD');
+	console.log('=== END ===');
 	return {
 		keyMonth,
 		firstDate: firstDate.format('YYYY-MM-DD'),
