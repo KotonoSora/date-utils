@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 import { START_DATE_ACTION } from './constants';
 
 export interface IGetKeyMonth {
@@ -14,7 +14,7 @@ export interface IKeymonth {
 	lastDate: string;
 }
 
-export default function getKeyMonth(props: IGetKeyMonth): IKeymonth {
+export default function getKeyMonth (props: IGetKeyMonth): IKeymonth {
 	const initDate = moment.utc(props.initDate);
 	let firstDate = initDate.clone();
 	let lastDate = initDate.clone();
@@ -40,22 +40,43 @@ export default function getKeyMonth(props: IGetKeyMonth): IKeymonth {
 				.add(-1, 'day');
 		}
 	}
+	const currentFirstDate = firstDate.clone().day();
+	const nextFirstDate = lastDate
+		.clone()
+		.add(1, 'day')
+		.day();
 	switch (props.monthStartDateAction) {
 		case START_DATE_ACTION.NO_CHANGE:
 			break;
 		case START_DATE_ACTION.PREVIOUS:
-			if (lastDate.clone().add(1, 'day').day() === 6) {
+			// firstDate
+			if (currentFirstDate === 6) {
+				firstDate = firstDate.clone().add(-1, 'day');
+			}
+			if (currentFirstDate === 0) {
+				firstDate = firstDate.clone().add(-2, 'day');
+			}
+			// last date
+			if (nextFirstDate === 6) {
 				lastDate = lastDate.clone().add(-1, 'day');
 			}
-			if (lastDate.clone().add(1, 'day').day() === 0) {
+			if (nextFirstDate === 0) {
 				lastDate = lastDate.clone().add(-2, 'day');
 			}
 			break;
 		case START_DATE_ACTION.NEXT_WEEK:
-			if (lastDate.clone().add(1, 'day').day() === 6) {
+			// firstDate
+			if (currentFirstDate === 6) {
+				firstDate = firstDate.clone().add(2, 'day');
+			}
+			if (currentFirstDate === 0) {
+				firstDate = firstDate.clone().add(1, 'day');
+			}
+			// last date
+			if (nextFirstDate === 6) {
 				lastDate = lastDate.clone().add(2, 'day');
 			}
-			if (lastDate.clone().add(1, 'day').day() === 0) {
+			if (nextFirstDate === 0) {
 				lastDate = lastDate.clone().add(1, 'day');
 			}
 			break;
