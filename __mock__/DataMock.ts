@@ -68,6 +68,75 @@ export const WITHOUT_HOLIDAY = {
 			}
 		}
 	},
+	'2020-04-01': {
+		NO_CHANGE: {
+			1: {
+				keyMonth: '2020-04-01-2020-04-30',
+				firstDate: '2020-04-01',
+				lastDate: '2020-04-30'
+			}
+		},
+		PREVIOUS: {
+			1: {
+				keyMonth: '2020-04-01-2020-04-30',
+				firstDate: '2020-04-01',
+				lastDate: '2020-04-30'
+			}
+		},
+		NEXT_WEEK: {
+			1: {
+				keyMonth: '2020-04-01-2020-04-30',
+				firstDate: '2020-04-01',
+				lastDate: '2020-04-30'
+			}
+		}
+	},
+	'2020-05-01': {
+		NO_CHANGE: {
+			1: {
+				keyMonth: '2020-05-01-2020-05-31',
+				firstDate: '2020-05-01',
+				lastDate: '2020-05-31'
+			}
+		},
+		PREVIOUS: {
+			1: {
+				keyMonth: '2020-05-01-2020-05-31',
+				firstDate: '2020-05-01',
+				lastDate: '2020-05-31'
+			}
+		},
+		NEXT_WEEK: {
+			1: {
+				keyMonth: '2020-05-01-2020-05-31',
+				firstDate: '2020-05-01',
+				lastDate: '2020-05-31'
+			}
+		}
+	},
+	'2020-06-01': {
+		NO_CHANGE: {
+			1: {
+				keyMonth: '2020-06-01-2020-06-30',
+				firstDate: '2020-06-01',
+				lastDate: '2020-06-30'
+			}
+		},
+		PREVIOUS: {
+			1: {
+				keyMonth: '2020-06-01-2020-06-30',
+				firstDate: '2020-06-01',
+				lastDate: '2020-06-30'
+			}
+		},
+		NEXT_WEEK: {
+			1: {
+				keyMonth: '2020-06-01-2020-06-30',
+				firstDate: '2020-06-01',
+				lastDate: '2020-06-30'
+			}
+		}
+	},
 	'2020-07-01': {
 		NO_CHANGE: {
 			1: {
@@ -88,6 +157,144 @@ export const WITHOUT_HOLIDAY = {
 				keyMonth: '2020-07-01-2020-08-02',
 				firstDate: '2020-07-01',
 				lastDate: '2020-08-02'
+			}
+		}
+	},
+	'2020-07-10': {
+		NO_CHANGE: {
+			10: {
+				keyMonth: '2020-07-10-2020-08-09',
+				firstDate: '2020-07-10',
+				lastDate: '2020-08-09'
+			}
+		},
+		PREVIOUS: {
+			10: {
+				keyMonth: '2020-07-10-2020-08-09',
+				firstDate: '2020-07-10',
+				lastDate: '2020-08-09'
+			}
+		},
+		NEXT_WEEK: {
+			10: {
+				keyMonth: '2020-07-10-2020-08-09',
+				firstDate: '2020-07-10',
+				lastDate: '2020-08-09'
+			}
+		}
+	},
+	'2020-08-01': {
+		NO_CHANGE: {
+			1: {
+				keyMonth: '2020-08-01-2020-08-31',
+				firstDate: '2020-08-01',
+				lastDate: '2020-08-31'
+			}
+		},
+		PREVIOUS: {
+			1: {
+				keyMonth: '2020-07-31-2020-08-31',
+				firstDate: '2020-07-31',
+				lastDate: '2020-08-31'
+			}
+		},
+		NEXT_WEEK: {
+			1: {
+				keyMonth: '2020-08-03-2020-08-31',
+				firstDate: '2020-08-03',
+				lastDate: '2020-08-31'
+			}
+		}
+	},
+	'2020-09-01': {
+		NO_CHANGE: {
+			1: {
+				keyMonth: '2020-09-01-2020-09-30',
+				firstDate: '2020-09-01',
+				lastDate: '2020-09-30'
+			}
+		},
+		PREVIOUS: {
+			1: {
+				keyMonth: '2020-09-01-2020-09-30',
+				firstDate: '2020-09-01',
+				lastDate: '2020-09-30'
+			}
+		},
+		NEXT_WEEK: {
+			1: {
+				keyMonth: '2020-09-01-2020-09-30',
+				firstDate: '2020-09-01',
+				lastDate: '2020-09-30'
+			}
+		}
+	},
+	'2020-10-01': {
+		NO_CHANGE: {
+			1: {
+				keyMonth: '2020-10-01-2020-10-31',
+				firstDate: '2020-10-01',
+				lastDate: '2020-10-31'
+			}
+		},
+		PREVIOUS: {
+			1: {
+				keyMonth: '2020-10-01-2020-10-29',
+				firstDate: '2020-10-01',
+				lastDate: '2020-10-29'
+			}
+		},
+		NEXT_WEEK: {
+			1: {
+				keyMonth: '2020-10-01-2020-11-01',
+				firstDate: '2020-10-01',
+				lastDate: '2020-11-01'
+			}
+		}
+	},
+	'2020-11-01': {
+		NO_CHANGE: {
+			1: {
+				keyMonth: '2020-11-01-2020-11-30',
+				firstDate: '2020-11-01',
+				lastDate: '2020-11-30'
+			}
+		},
+		PREVIOUS: {
+			1: {
+				keyMonth: '2020-10-30-2020-11-30',
+				firstDate: '2020-10-30',
+				lastDate: '2020-11-30'
+			}
+		},
+		NEXT_WEEK: {
+			1: {
+				keyMonth: '2020-11-02-2020-11-30',
+				firstDate: '2020-11-02',
+				lastDate: '2020-11-30'
+			}
+		}
+	},
+	'2020-12-01': {
+		NO_CHANGE: {
+			1: {
+				keyMonth: '2020-12-01-2020-12-31',
+				firstDate: '2020-12-01',
+				lastDate: '2020-12-31'
+			}
+		},
+		PREVIOUS: {
+			1: {
+				keyMonth: '2020-12-01-2020-12-31',
+				firstDate: '2020-12-01',
+				lastDate: '2020-12-31'
+			}
+		},
+		NEXT_WEEK: {
+			1: {
+				keyMonth: '2020-12-01-2020-12-31',
+				firstDate: '2020-12-01',
+				lastDate: '2020-12-31'
 			}
 		}
 	}
