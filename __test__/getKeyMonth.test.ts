@@ -27,8 +27,8 @@ export const runExpectTestCase = (paramTest: IGetKeyMonth) => {
 	});
 };
 
-describe('getKeyMonth 2020-07-01', () => {
-	advanceTo(moment.utc('2020-07-01').toDate());
+export const runTestCase = (dayTest: string) => {
+	advanceTo(moment.utc(dayTest).toDate());
 	for (const action in START_DATE_ACTION) {
 		if (Object.prototype.hasOwnProperty.call(START_DATE_ACTION, action)) {
 			const monthStartDateAction: START_DATE_ACTION = START_DATE_ACTION[action];
@@ -38,29 +38,14 @@ describe('getKeyMonth 2020-07-01', () => {
 				monthStartDateAction,
 				holidayData: holidays
 			};
-			for (let startDate: number = 1; startDate <= 1; startDate++) {
-				const paramTest = { ...param, monthStartDate: startDate };
+			const paramTest = { ...param, monthStartDate: 1 };
+			describe(`getKeyMonth: ${paramTest.initDate}`, () => {
 				runExpectTestCase(paramTest);
-			}
+			});
 		}
 	}
-});
+};
 
-describe('getKeyMonth 2020-02-01', () => {
-	advanceTo(moment.utc('2020-02-01').toDate());
-	for (const action in START_DATE_ACTION) {
-		if (Object.prototype.hasOwnProperty.call(START_DATE_ACTION, action)) {
-			const monthStartDateAction: START_DATE_ACTION = START_DATE_ACTION[action];
-			const param: IGetKeyMonth = {
-				initDate: moment.utc().format('YYYY-MM-DD'),
-				monthStartDate: 1,
-				monthStartDateAction,
-				holidayData: holidays
-			};
-			for (let startDate: number = 1; startDate <= 1; startDate++) {
-				const paramTest = { ...param, monthStartDate: startDate };
-				runExpectTestCase(paramTest);
-			}
-		}
-	}
-});
+Object.keys(resultTest['WITHOUT_HOLIDAY']).forEach((dayTest: string) =>
+	runTestCase(dayTest)
+);
