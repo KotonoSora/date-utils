@@ -32,7 +32,9 @@ export const runTestCase = (dayTest: string) => {
 	for (const action in START_DATE_ACTION) {
 		if (Object.prototype.hasOwnProperty.call(START_DATE_ACTION, action)) {
 			const monthStartDateAction: START_DATE_ACTION = START_DATE_ACTION[action];
-			let itemSelected: string[] = Object.keys(resultTest['WITHOUT_HOLIDAY'][dayTest][monthStartDateAction]);
+			let itemSelected: string[] = Object.keys(
+				resultTest['WITHOUT_HOLIDAY'][dayTest][monthStartDateAction]
+			);
 			const monthStartDate: number = parseInt(itemSelected[0]);
 			const paramTest: IGetKeyMonth = {
 				initDate: moment.utc().format('YYYY-MM-DD'),

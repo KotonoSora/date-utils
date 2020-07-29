@@ -10,38 +10,38 @@ export interface IGetKeyMonth {
 
 export interface IKeymonth {
 	keyMonth: string;
-	firstDate: string;
-	lastDate: string;
+	fromDate: string;
+	toDate: string;
 }
 
 export default function getKeyMonth (props: IGetKeyMonth): IKeymonth {
 	const initDate = moment.utc(props.initDate);
-	let firstDate = initDate.clone();
-	let lastDate = initDate.clone();
+	let fromDate = initDate.clone();
+	let toDate = initDate.clone();
 	if (props.monthStartDate >= 32) {
-		firstDate.add(-1, 'month').endOf('month');
-		lastDate = firstDate.clone().add(1, 'month');
+		fromDate.add(-1, 'month').endOf('month');
+		toDate = fromDate.clone().add(1, 'month');
 	} else {
 		if (initDate.clone().get('date') < props.monthStartDate) {
-			firstDate.add(-1, 'month');
+			fromDate.add(-1, 'month');
 		}
-		const maxDayOfMonth = firstDate
+		const maxDayOfMonth = fromDate
 			.clone()
 			.endOf('month')
 			.get('date');
 		if (props.monthStartDate > maxDayOfMonth) {
-			firstDate.endOf('month');
-			lastDate = firstDate.clone().add(1, 'month');
+			fromDate.endOf('month');
+			toDate = fromDate.clone().add(1, 'month');
 		} else {
-			firstDate.set('date', props.monthStartDate);
-			lastDate = firstDate
+			fromDate.set('date', props.monthStartDate);
+			toDate = fromDate
 				.clone()
 				.add(1, 'month')
 				.add(-1, 'day');
 		}
 	}
-	const currentFirstDate = firstDate.clone().day();
-	const nextFirstDate = lastDate
+	const currentfromDate = fromDate.clone().day();
+	const nextfromDate = toDate
 		.clone()
 		.add(1, 'day')
 		.day();
@@ -49,46 +49,46 @@ export default function getKeyMonth (props: IGetKeyMonth): IKeymonth {
 		case START_DATE_ACTION.NO_CHANGE:
 			break;
 		case START_DATE_ACTION.PREVIOUS:
-			// firstDate
-			if (currentFirstDate === 6) {
-				firstDate = firstDate.clone().add(-1, 'day');
+			// fromDate
+			if (currentfromDate === 6) {
+				fromDate = fromDate.clone().add(-1, 'day');
 			}
-			if (currentFirstDate === 0) {
-				firstDate = firstDate.clone().add(-2, 'day');
+			if (currentfromDate === 0) {
+				fromDate = fromDate.clone().add(-2, 'day');
 			}
 			// last date
-			if (nextFirstDate === 6) {
-				lastDate = lastDate.clone().add(-1, 'day');
+			if (nextfromDate === 6) {
+				toDate = toDate.clone().add(-1, 'day');
 			}
-			if (nextFirstDate === 0) {
-				lastDate = lastDate.clone().add(-2, 'day');
+			if (nextfromDate === 0) {
+				toDate = toDate.clone().add(-2, 'day');
 			}
 			break;
 		case START_DATE_ACTION.NEXT_WEEK:
-			// firstDate
-			if (currentFirstDate === 6) {
-				firstDate = firstDate.clone().add(2, 'day');
+			// fromDate
+			if (currentfromDate === 6) {
+				fromDate = fromDate.clone().add(2, 'day');
 			}
-			if (currentFirstDate === 0) {
-				firstDate = firstDate.clone().add(1, 'day');
+			if (currentfromDate === 0) {
+				fromDate = fromDate.clone().add(1, 'day');
 			}
 			// last date
-			if (nextFirstDate === 6) {
-				lastDate = lastDate.clone().add(2, 'day');
+			if (nextfromDate === 6) {
+				toDate = toDate.clone().add(2, 'day');
 			}
-			if (nextFirstDate === 0) {
-				lastDate = lastDate.clone().add(1, 'day');
+			if (nextfromDate === 0) {
+				toDate = toDate.clone().add(1, 'day');
 			}
 			break;
 		default:
 			break;
 	}
-	let keyMonth: string = firstDate.format('YYYY-MM-DD');
+	let keyMonth: string = fromDate.format('YYYY-MM-DD');
 	keyMonth += '-';
-	keyMonth += lastDate.format('YYYY-MM-DD');
+	keyMonth += toDate.format('YYYY-MM-DD');
 	return {
 		keyMonth,
-		firstDate: firstDate.format('YYYY-MM-DD'),
-		lastDate: lastDate.format('YYYY-MM-DD')
+		fromDate: fromDate.format('YYYY-MM-DD'),
+		toDate: toDate.format('YYYY-MM-DD')
 	};
 }
