@@ -1,30 +1,148 @@
 # Date Utils
 
+> A small tool calculator calendar in month
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Features](#features)
+  - [Get Key Month](#get-key-month)
+  - [Get List Date](#get-list-date)
+  - [Get Page Month](#get-page-month)
+  - [Props](#Props)
+- [License](#license)
+
+## Installation
+
+```shell
+npm install @kotonosora-tech/date-utils
+```
+
+```shell
+yarn add @kotonosora-tech/date-utils
+```
+
 ## Features
 
-1. Get date in time of month
-2. Get firstDay, lastDay, keyMonth
+### Get Key Month
 
----
+> Return from date, to date available of month by select day, month start date, action change start date and holidays in a round year
 
-MIT License
+```javascript
+getKeyMonth(param: IGetKeyMonth): IKeymonth
+```
 
-Copyright (c) 2020 Nguyễn Duy Thắng
+Example:
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+```javascript
+import moment from "moment";
+import {
+    getKeyMonth,
+    IGetKeyMonth,
+    START_DATE_ACTION,
+    IKeymonth
+} from "@kotonosora-tech/date-utils";
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+const holidays: string[] = [
+    '2020-01-01',
+    '2020-04-30',
+    '2020-05-01',
+    '2020-09-02',
+]
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+const param: IGetKeyMonth = {
+    initDate: moment.utc('2020-01-24').format('YYYY-MM-DD'),
+    monthStartDate: 1,
+    monthStartDateAction: START_DATE_ACTION.NO_CHANGE,
+    holidayData: holidays
+};
+
+const result: IKeymonth = getKeyMonth(param);
+
+/**
+result = {
+    keyMonth: '2020-01-01-2020-01-31',
+    fromDate: '2020-01-01',
+    toDate: '2020-01-31'
+}
+* /
+```
+
+### Get List Date
+
+> Return list string format `YYYY-MM-DD` by from, to date
+
+```javascript
+getListDate(fromDate: string, toDate: string): string[]
+```
+
+Example:
+
+```javascript
+import {getListDate} from "@kotonosora-tech/date-utils";
+
+const fromDate: string = '2020-07-01';
+const toDate: string = '2020-07-05';
+
+let result: string[] = getListDate(fromDate, toDate);
+
+/**
+result = [
+    '2020-07-01',
+    '2020-07-02',
+    '2020-07-03',
+    '2020-07-04',
+    '2020-07-05'
+];
+* /
+```
+
+### Get Page Month
+
+> Return list string format `YYYY-MM-DD` of page calendar by first day of week, from and to date
+
+```javascript
+getPageMonth(param: IPageMonth): string[]
+```
+
+Example:
+
+```javascript
+import {getPageMonth, FIRST_DAY_OF_WEEK} from "@kotonosora-tech/date-utils";
+
+let param: IPageMonth = {
+    firstDayOfWeek: FIRST_DAY_OF_WEEK.MONDAY,
+    fromDate: '2020-06-10',
+    toDate: '2020-07-09'
+};
+
+let result: string[] = getPageMonth(param);
+
+/**
+result = [
+    '2020-06-08',
+    '2020-06-09',
+    ...
+    '2020-07-11',
+    '2020-07-12'
+];
+* /
+```
+
+### Props
+
+| Props                  | Options                                                   | Default | Description                                          |
+| ---------------------- | --------------------------------------------------------- | ------- | ---------------------------------------------------- |
+| `firstDayOfWeek`       | `FIRST_DAY_OF_WEEK`: `MONDAY`, `SUNDAY`                   | `NULL`  | Day start of week                                    |
+| `fromDate`             | `string`                                                  | `NULL`  | Date start (format: `YYYY-MM-DD`)                    |
+| `toDate`               | `string`                                                  | `NULL`  | Date end (format: `YYYY-MM-DD`)                      |
+| `keyMonth`             | `string`                                                  | `NULL`  | `fromDate-toDate` (format: `YYYY-MM-DD-YYYY-MM-DD`)  |
+| `initDate`             | `string`                                                  | `NULL`  | Current date or selected date (format: `YYYY-MM-DD`) |
+| `holidayData`          | `string[]`                                                | `NULL`  | List holidays using (holiday format: `YYYY-MM-DD`)   |
+| `monthStartDate`       | `number`                                                  | `NULL`  | Date in month from `1` to `31`, last day is `32`     |
+| `monthStartDateAction` | `START_DATE_ACTION`: `NO_CHANGE`, `PREVIOUS`, `NEXT_WEEK` | `NULL`  | Date in month from `1` to `31`, last day is `32`     |
+
+## License
+
+- **[MIT license](./LICENSE)**
+- Copyright (c) 2020 [Nguyễn Duy Thắng](https://kotonosora.dev 'My CV Online').
