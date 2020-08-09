@@ -41,12 +41,13 @@ export default function getKeyMonth (props: IGetKeyMonth): IKeymonth {
 		}
 	}
 	const currentfromDate = fromDate.clone().day();
-	console.log(fromDate);
-	
+	console.log('getKeyMonth... currentfromDate: ', currentfromDate);
+
 	const nextfromDate = toDate
 		.clone()
 		.add(1, 'day')
 		.day();
+	console.log('getKeyMonth... nextfromDate: ', nextfromDate);
 	switch (props.monthStartDateAction) {
 		case START_DATE_ACTION.NO_CHANGE:
 			break;
