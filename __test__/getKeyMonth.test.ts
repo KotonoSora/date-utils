@@ -28,8 +28,6 @@ export const runExpectTestCase = (paramTest: IGetKeyMonth) => {
 };
 
 export const runTestCase = (dayTest: string) => {
-	console.log(dayTest);
-	
 	advanceTo(moment.utc(dayTest).toDate());
 	for (const action in START_DATE_ACTION) {
 		if (Object.prototype.hasOwnProperty.call(START_DATE_ACTION, action)) {
