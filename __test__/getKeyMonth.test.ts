@@ -49,8 +49,10 @@ export const runTestCase = (dayTest: string) => {
 	}
 };
 
-// Object.keys(resultTest['WITHOUT_HOLIDAY']).forEach((dayTest: string) =>
-// 	runTestCase(dayTest)
-// );
+Object.keys(resultTest['WITHOUT_HOLIDAY']).forEach((dayTest: string) =>
+	runTestCase(dayTest)
+);
 
-runTestCase('2020-08-09');
+// runTestCase('2020-01-01');
+// runTestCase('2020-02-01');
+// runTestCase('2020-08-09');

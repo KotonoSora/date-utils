@@ -40,14 +40,26 @@ export default function getKeyMonth (props: IGetKeyMonth): IKeymonth {
 				.add(-1, 'day');
 		}
 	}
+
+	if (props.monthStartDateAction === START_DATE_ACTION.NEXT_WEEK) {
+		if (
+			fromDate.get('date') <= props.monthStartDate &&
+			fromDate.get('month') >= initDate.get('month') &&
+			(fromDate.get('day') === 0 || fromDate.get('day') === 6)
+		) {
+			fromDate = fromDate.add(-1, 'month');
+			toDate = fromDate.clone().add(1, 'month');
+		}
+	}
+
 	const currentfromDate = fromDate.clone().day();
-	console.log('getKeyMonth... currentfromDate: ', currentfromDate);
+	// console.log('getKeyMonth... currentfromDate: ', currentfromDate);
 
 	const nextfromDate = toDate
 		.clone()
 		.add(1, 'day')
 		.day();
-	console.log('getKeyMonth... nextfromDate: ', nextfromDate);
+	// console.log('getKeyMonth... nextfromDate: ', nextfromDate);
 	switch (props.monthStartDateAction) {
 		case START_DATE_ACTION.NO_CHANGE:
 			break;
@@ -68,6 +80,7 @@ export default function getKeyMonth (props: IGetKeyMonth): IKeymonth {
 			}
 			break;
 		case START_DATE_ACTION.NEXT_WEEK:
+			// console.log('next week fromDate: ', fromDate.format('YYYY-MM-DD'));
 			// fromDate
 			if (currentfromDate === 6) {
 				fromDate = fromDate.clone().add(2, 'day');
