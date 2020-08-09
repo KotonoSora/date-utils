@@ -41,6 +41,8 @@ export default function getKeyMonth (props: IGetKeyMonth): IKeymonth {
 		}
 	}
 	const currentfromDate = fromDate.clone().day();
+	console.log(fromDate);
+	
 	const nextfromDate = toDate
 		.clone()
 		.add(1, 'day')
