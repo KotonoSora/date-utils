@@ -39,9 +39,9 @@ export const WITHOUT_HOLIDAY = {
 		},
 		NEXT_WEEK: {
 			1: {
-				keyMonth: '2020-02-03-2020-03-01',
-				fromDate: '2020-02-03',
-				toDate: '2020-03-01'
+				keyMonth: '2020-01-01-2020-02-02',
+				fromDate: '2020-01-01',
+				toDate: '2020-02-02'
 			}
 		}
 	},
@@ -62,9 +62,9 @@ export const WITHOUT_HOLIDAY = {
 		},
 		NEXT_WEEK: {
 			1: {
-				keyMonth: '2020-03-02-2020-03-31',
-				fromDate: '2020-03-02',
-				toDate: '2020-03-31'
+				keyMonth: '2020-02-03-2020-03-01',
+				fromDate: '2020-02-03',
+				toDate: '2020-03-01'
 			}
 		}
 	},
@@ -200,9 +200,9 @@ export const WITHOUT_HOLIDAY = {
 		},
 		NEXT_WEEK: {
 			1: {
-				keyMonth: '2020-08-03-2020-08-31',
-				fromDate: '2020-08-03',
-				toDate: '2020-08-31'
+				keyMonth: '2020-07-01-2020-08-02',
+				fromDate: '2020-07-01',
+				toDate: '2020-08-02'
 			}
 		}
 	},
@@ -292,9 +292,9 @@ export const WITHOUT_HOLIDAY = {
 		},
 		NEXT_WEEK: {
 			1: {
-				keyMonth: '2020-11-02-2020-11-30',
-				fromDate: '2020-11-02',
-				toDate: '2020-11-30'
+				keyMonth: '2020-10-01-2020-11-01',
+				fromDate: '2020-10-01',
+				toDate: '2020-11-01'
 			}
 		}
 	},
