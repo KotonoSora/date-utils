@@ -28,6 +28,8 @@ export const runExpectTestCase = (paramTest: IGetKeyMonth) => {
 };
 
 export const runTestCase = (dayTest: string) => {
+	console.log(dayTest);
+	
 	advanceTo(moment.utc(dayTest).toDate());
 	for (const action in START_DATE_ACTION) {
 		if (Object.prototype.hasOwnProperty.call(START_DATE_ACTION, action)) {
@@ -49,6 +51,8 @@ export const runTestCase = (dayTest: string) => {
 	}
 };
 
-Object.keys(resultTest['WITHOUT_HOLIDAY']).forEach((dayTest: string) =>
-	runTestCase(dayTest)
-);
+// Object.keys(resultTest['WITHOUT_HOLIDAY']).forEach((dayTest: string) =>
+// 	runTestCase(dayTest)
+// );
+
+runTestCase('2020-08-09');

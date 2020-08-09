@@ -206,6 +206,15 @@ export const WITHOUT_HOLIDAY = {
 			}
 		}
 	},
+	'2020-08-09': {
+		NEXT_WEEK: {
+			1: {
+				keyMonth: '2020-07-10-2020-08-09',
+				fromDate: '2020-07-10',
+				toDate: '2020-08-09'
+			}
+		},
+	},
 	'2020-09-01': {
 		NO_CHANGE: {
 			1: {
