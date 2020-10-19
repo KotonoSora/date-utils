@@ -43,14 +43,12 @@ const holidays: string[] = [
     '2020-09-02',
 ]
 
-const param = {
-    initDate: moment('2020-01-24'),
-    monthStartDate: 1,
-    monthStartDateAction: MonthlyStartDateAction.NoChange,
-    holidayData: holidays
-};
-
-const result = getKeyMonthFromToDate(param);
+const result = getKeyMonthFromToDate(
+    moment('2020-01-24'),
+    1,
+    MonthlyStartDateAction.NoChange,
+    holidays
+);
 
 /**
 result = {
