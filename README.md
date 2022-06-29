@@ -27,14 +27,13 @@ yarn add @kotonosora-tech/date-utils
 > Return from date, to date available of month by select day, month start date, action change start date and holidays in a round year
 
 ```javascript
-getKeyMonthFromToDate(param);
+keyMonth(param);
 ```
 
 Example:
 
 ```javascript
-import moment from "moment";
-import getKeyMonthFromToDate, {MonthlyStartDateAction} from "@kotonosora-tech/date-utils";
+import keyMonth, {MonthlyStartDateAction} from "@kotonosora-tech/date-utils";
 
 const holidays: string[] = [
     '2020-01-01',
@@ -43,8 +42,8 @@ const holidays: string[] = [
     '2020-09-02',
 ]
 
-const result = getKeyMonthFromToDate(
-    moment('2020-01-24'),
+const result = keyMonth(
+    new Date(),
     1,
     MonthlyStartDateAction.NoChange,
     holidays
@@ -52,14 +51,26 @@ const result = getKeyMonthFromToDate(
 
 /**
 result = {
-    keyMonth: '2020-01-01-2020-01-31',
-    fromDate: '2020-01-01',
-    toDate: '2020-01-31'
+    keyMonth: '2022-06-01-2022-06-30',
+    fromDate: '2022-06-01',
+    toDate: '2022-06-30'
 }
 * /
 ```
 
 ### Props
+
+| Props                  | Options                                                   | Default | Description                                          |
+| ---------------------- | --------------------------------------------------------- | ------- | ---------------------------------------------------- |
+| `firstDayOfWeek`       | `FIRST_DAY_OF_WEEK`: `MONDAY`, `SUNDAY`                   | `NULL`  | Day start of week                                    |
+| `fromDate`             | `string`                                                  | `NULL`  | Date start (format: `YYYY-MM-DD`)                    |
+| `toDate`               | `string`                                                  | `NULL`  | Date end (format: `YYYY-MM-DD`)                      |
+| `keyMonth`             | `string`                                                  | `NULL`  | `fromDate-toDate` (format: `YYYY-MM-DD-YYYY-MM-DD`)  |
+| `initDate`             | `string`                                                  | `NULL`  | Current date or selected date (format: `YYYY-MM-DD`) |
+| `holidayData`          | `string[]`                                                | `NULL`  | List holidays using (holiday format: `YYYY-MM-DD`)   |
+| `monthStartDate`       | `number`                                                  | `NULL`  | Date in month from `1` to `31`, last day is `32`     |
+| `monthStartDateAction` | `START_DATE_ACTION`: `NO_CHANGE`, `PREVIOUS`, `NEXT_WEEK` | `NULL`  | Date in month from `1` to `31`, last day is `32`     |
+
 
 ## License
 
