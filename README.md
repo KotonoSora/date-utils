@@ -27,13 +27,14 @@ yarn add @kotonosora-tech/date-utils
 > Return from date, to date available of month by select day, month start date, action change start date and holidays in a round year
 
 ```javascript
-keyMonth(param);
+getKeyMonthFromToDate(param);
 ```
 
 Example:
 
 ```javascript
-import keyMonth, {MonthlyStartDateAction} from "@kotonosora-tech/date-utils";
+import {getKeyMonthFromToDate} from '@kotonosora-tech/date-utils';
+import { DateKeyFormat, MonthlyStartDateAction } from '@kotonosora-tech/date-utils/constants';
 
 const holidays: string[] = [
     '2020-01-01',
@@ -42,8 +43,8 @@ const holidays: string[] = [
     '2020-09-02',
 ]
 
-const result = keyMonth(
-    new Date(),
+const result = getKeyMonthFromToDate(
+    parse('2022-06-29', DateKeyFormat, new Date()),
     1,
     MonthlyStartDateAction.NoChange,
     holidays

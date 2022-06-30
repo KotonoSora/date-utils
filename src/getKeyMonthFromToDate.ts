@@ -4,7 +4,7 @@ import { DateKeyFormat, MonthlyStartDateAction } from './constants';
 import { IKeymonth } from './types';
 import getDurationTimeMonthContainDate from './getDurationTimeMonthContainDate';
 
-function keyMonth(
+function getKeyMonthFromToDate(
   initDate: Date,
   monthStartDate = 1,
   monthStartDateAction = MonthlyStartDateAction.NoChange,
@@ -26,4 +26,4 @@ function keyMonth(
   };
 }
 
-export default keyMonth;
+export default getKeyMonthFromToDate;

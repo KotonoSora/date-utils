@@ -1,7 +1,7 @@
 import { subDays, addDays } from 'date-fns';
 
 import { MonthlyStartDateAction } from './constants';
-import isHolidayDate from './isHolidayDate';
+import isHolidayOrWeekend from './isHolidayDate';
 
 function startDateAvoidHolidayOfDate(
   date: Date,
@@ -11,7 +11,7 @@ function startDateAvoidHolidayOfDate(
   if (cutoffDateSetting === MonthlyStartDateAction.NoChange) {
     return date;
   }
-  while (isHolidayDate(date, holidayData)) {
+  while (isHolidayOrWeekend(date, holidayData)) {
     if (cutoffDateSetting === MonthlyStartDateAction.Previous) {
       date = subDays(date, 1);
     } else if (cutoffDateSetting === MonthlyStartDateAction.NextWeek) {
