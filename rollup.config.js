@@ -6,7 +6,7 @@ function makeBundle({ filePath, dir = 'dist' }) {
   return {
     input: filePath,
     output: {
-      dir: dir,
+      dir,
       format: 'cjs',
     },
     plugins: [typescript(), terser()],
@@ -16,5 +16,4 @@ function makeBundle({ filePath, dir = 'dist' }) {
 
 export default defineConfig([
   makeBundle({ filePath: 'src/index.ts' }),
-  makeBundle({ filePath: 'src/constants.ts' }),
 ]);
