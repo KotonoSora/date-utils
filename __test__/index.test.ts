@@ -1,7 +1,6 @@
 import { parse } from 'date-fns';
 
-import {getKeyMonthFromToDate} from '../dist';
-import { DateKeyFormat, MonthlyStartDateAction } from '../dist/constants';
+import {getKeyMonthFromToDate, DateKeyFormat, MonthlyStartDateAction} from '../dist';
 
 const holidays: string[] = [
   '2020-01-01',

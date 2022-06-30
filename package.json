@@ -1,7 +1,8 @@
 {
 	"name": "@kotonosora-tech/date-utils",
-	"version": "1.0.12-alpha.1",
+	"version": "1.0.12-alpha.2",
 	"description": "A small tool calculator calendar in month",
+	"main": "dist/index.js",
 	"scripts": {
 		"types": "tsc src/index.ts --declaration --emitDeclarationOnly --esModuleInterop --outDir dist",
 		"build": "npm run build.clean && npm run build.only && npm run types",
@@ -29,9 +30,6 @@
 		"jest": "^28.1.2",
 		"rimraf": "^3.0.2",
 		"rollup": "^2.75.7",
-		"rollup-plugin-commonjs": "^10.1.0",
-		"rollup-plugin-node-resolve": "^5.2.0",
-		"rollup-plugin-peer-deps-external": "^2.2.4",
 		"rollup-plugin-terser": "^7.0.2",
 		"rollup-plugin-typescript2": "^0.32.1",
 		"ts-jest": "^28.0.5",
