@@ -1,8 +1,5 @@
-import keyMonth from './keyMonth';
-import { MonthlyStartDateAction, DateKeyFormat } from './constants';
+import getKeyMonthFromToDate from './getKeyMonthFromToDate';
 
 export {
-  keyMonth,
-  MonthlyStartDateAction,
-  DateKeyFormat,
+  getKeyMonthFromToDate,
 };
