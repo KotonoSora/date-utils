@@ -1,6 +1,6 @@
 {
 	"name": "@kotonosora-tech/date-utils",
-	"version": "1.0.12-alpha.3",
+	"version": "1.0.12",
 	"description": "A small tool calculator calendar in month",
 	"keywords": [
 		"date",
