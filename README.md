@@ -1,22 +1,33 @@
-# Date Utils
+<div align="center">
+<h1>Date Utils</h1>
 
-> A small tool calculator calendar in month
+<p>
+A small tool calculator calendar in month
+</p>
 
-## Table of Contents
+[![version][version-badge]][package]
+[![MIT License][license-badge]][license]
+
+</div>
+
+<hr />
+
+<!-- ## Table of Contents -->
+<details><summary>Table of Contents</summary><p>
 
 - [Installation](#installation)
 - [Features](#features)
   - [Get Key Month](#get-key-month)
+  - [Get Page Month](#get-page-month)
   - [Props](#Props)
 - [License](#license)
+</p></details>
 
 ## Installation
 
 ```shell
-npm install @kotonosora-tech/date-utils
-```
-
-```shell
+npm install @kotonosora-tech/date-utils --save
+# or with yarn
 yarn add @kotonosora-tech/date-utils
 ```
 
@@ -86,6 +97,7 @@ result = [
   '2020-07-12'
 ];
 * /
+```
 
 ### Props
 
@@ -104,4 +116,4 @@ result = [
 ## License
 
 - **[MIT license](./LICENSE)**
-- Copyright (c) 2020 [Nguyễn Duy Thắng](https://kotonosora.dev 'My CV Online').
+- Copyright (c) 2017-2022 [Nguyễn Duy Thắng](https://kotonosora.dev 'My CV Online').
