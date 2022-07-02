@@ -11,7 +11,7 @@ date-utils aims to be a community-driven project. So we hope to see your contrib
 We appreciated any help. There is not a thing as a small contribution. If you see a typo, send us a PR. If you experience a bug, please open an issue. If you have a suggestion, let us know. Below are some ways you can contribute to date-utils:
 
 - **Submit bugs or issues**: Software is full of bugs. date-utils is no exception. If you use date-utils and find a bug, please open an issue at [date-utils's issues](https://github.com/KotonoSora/date-utils/issues)
-- **Docs**: We have a documentation site at [www.date-utils.com](https://www.date-utils.com/docs/getting-started/intro), it's very easier to contribute to the documentation by using `Edit this page` button at the bottom of each page. If you see a typo, an unclear page or incorrect grammar, please send us a PR.
+- **Docs**: We have a documentation site at [here](https://github.com/KotonoSora/date-utils/wiki), it's very easier to contribute to the documentation by using `Edit this page` button at the bottom of each page. If you see a typo, an unclear page or incorrect grammar, please send us a PR.
 - **Fix bugs**: We are tracking bugs at [Issues](https://github.com/KotonoSora/date-utils/issues). Please [claim an issue](#claim-issues) then open a PR to fix a bug.
 - **Add new features**: Do you use date-utils for your projects and find out date-utils is missing a feature? Please open an issue to discuss it. And it's great if you can help to implement that feature.
 - **Answer questions and discussions on GitHub and Discord**: [GitHub discussions](https://github.com/KotonoSora/date-utils/discussions) and [Discord](https://discord.gg/fsdVgKYG5j)
