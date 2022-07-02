@@ -1,6 +1,6 @@
 import isLeapYear from './isLeapYear';
 
-function numberDayOfMonthYear(month: number, year: number) {
+function numberDayOfMonthYear(month: number, year: number): number {
   if (month === 2) {
     if (isLeapYear(year)) return 29;
     return 28;

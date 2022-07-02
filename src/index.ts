@@ -1,8 +1,11 @@
 import getKeyMonthFromToDate from './getKeyMonthFromToDate';
-import { DateKeyFormat, MonthlyStartDateAction } from './constants';
+import getPageMonth from './getPageMonth';
+import { DATE_KEY_FORMAT, MONTHLY_START_DATE_ACTION, FIRST_DAY_OF_WEEK } from './constants';
 
 export {
   getKeyMonthFromToDate,
-  DateKeyFormat,
-  MonthlyStartDateAction,
+  getPageMonth,
+  DATE_KEY_FORMAT,
+  MONTHLY_START_DATE_ACTION,
+  FIRST_DAY_OF_WEEK,
 };

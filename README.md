@@ -33,31 +33,59 @@ getKeyMonthFromToDate(param);
 Example:
 
 ```javascript
-import {getKeyMonthFromToDate} from '@kotonosora-tech/date-utils';
-import { DateKeyFormat, MonthlyStartDateAction } from '@kotonosora-tech/date-utils/constants';
+import { getKeyMonthFromToDate, DateKeyFormat, MonthlyStartDateAction } from '@kotonosora-tech/date-utils';
 
 const holidays: string[] = [
-    '2020-01-01',
-    '2020-04-30',
-    '2020-05-01',
-    '2020-09-02',
+  '2020-01-01',
+  '2020-04-30',
+  '2020-05-01',
+  '2020-09-02',
 ]
 
 const result = getKeyMonthFromToDate(
-    parse('2022-06-29', DateKeyFormat, new Date()),
-    1,
-    MonthlyStartDateAction.NoChange,
-    holidays
+  new Date(),
+  1,
+  MonthlyStartDateAction.NoChange,
+  holidays
 );
 
 /**
-result = {
-    keyMonth: '2022-06-01-2022-06-30',
-    fromDate: '2022-06-01',
-    toDate: '2022-06-30'
+{
+  keyMonth: '2022-07-01-2022-07-31',
+  fromDate: '2022-07-01',
+  toDate: '2022-07-31'
 }
 * /
 ```
+
+### Get Page Month
+
+> Return list string format `YYYY-MM-DD` of page calendar by first day of week, from and to date
+
+```javascript
+getPageMonth(param: IPageMonth): string[]
+```
+
+Example:
+
+```javascript
+import {getPageMonth, FIRST_DAY_OF_WEEK} from "@kotonosora-tech/date-utils";
+
+let result: string[] = getPageMonth(
+  FIRST_DAY_OF_WEEK.MONDAY,
+  new Date(2020, 6, 10),
+  new Date(2020, 7, 5)
+);
+
+/**
+result = [
+  '2020-06-08',
+  '2020-06-09',
+  ...
+  '2020-07-11',
+  '2020-07-12'
+];
+* /
 
 ### Props
 
