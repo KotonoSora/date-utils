@@ -1,20 +1,20 @@
 import { subDays, addDays } from 'date-fns';
 
-import { MonthlyStartDateAction } from './constants';
-import isHolidayOrWeekend from './isHolidayDate';
+import { MONTHLY_START_DATE_ACTION } from './constants';
+import isHolidayOrWeekend from './isHolidayOrWeekend';
 
 function startDateAvoidHolidayOfDate(
   date: Date,
-  cutoffDateSetting: MonthlyStartDateAction,
+  cutoffDateSetting: MONTHLY_START_DATE_ACTION,
   holidayData: Array<string>,
 ): Date {
-  if (cutoffDateSetting === MonthlyStartDateAction.NoChange) {
+  if (cutoffDateSetting === MONTHLY_START_DATE_ACTION.NO_CHANGE) {
     return date;
   }
   while (isHolidayOrWeekend(date, holidayData)) {
-    if (cutoffDateSetting === MonthlyStartDateAction.Previous) {
+    if (cutoffDateSetting === MONTHLY_START_DATE_ACTION.PREVIOUS) {
       date = subDays(date, 1);
-    } else if (cutoffDateSetting === MonthlyStartDateAction.NextWeek) {
+    } else if (cutoffDateSetting === MONTHLY_START_DATE_ACTION.NEXT_WEEK) {
       date = addDays(date, 1);
     }
   }

@@ -1,9 +1,9 @@
 import { format } from 'date-fns';
 
-import { DateKeyFormat } from './constants';
+import { DATE_KEY_FORMAT } from './constants';
 
 function isHoliday(date: Date, holidayData: Array<string>): boolean {
-  const dateStr = format(date, DateKeyFormat);
+  const dateStr = format(date, DATE_KEY_FORMAT);
   if (holidayData.includes(dateStr)) {
     return true;
   }

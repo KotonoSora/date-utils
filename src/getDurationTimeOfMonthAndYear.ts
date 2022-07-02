@@ -1,6 +1,6 @@
 import { subDays } from 'date-fns';
 
-import { MonthlyStartDateAction, DOME } from './constants';
+import { MONTHLY_START_DATE_ACTION, DOME } from './constants';
 import { IDuration } from './types';
 import numberDayOfMonthYear from './numberDayOfMonthYear';
 import startDateAvoidHolidayOfDate from './startDateAvoidHolidayOfDate';
@@ -9,7 +9,7 @@ function getDurationTimeOfMonthAndYear(
   month: number,
   year: number,
   startDate: number,
-  cutoffDateSetting: MonthlyStartDateAction,
+  cutoffDateSetting: MONTHLY_START_DATE_ACTION,
   holidayData: Array<string>,
 ): IDuration {
   // start Date of this month

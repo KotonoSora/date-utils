@@ -2,14 +2,14 @@ import {
   getMonth, getYear, isBefore, isAfter,
 } from 'date-fns';
 
-import { MonthlyStartDateAction } from './constants';
+import { DATE_KEY_FORMAT, MONTHLY_START_DATE_ACTION } from './constants';
 import { IDuration } from './types';
 import getDurationTimeOfMonthAndYear from './getDurationTimeOfMonthAndYear';
 
 function getDurationTimeMonthContainDate(
   date: Date,
   startDate: number,
-  cutoffDateSetting: MonthlyStartDateAction,
+  cutoffDateSetting: MONTHLY_START_DATE_ACTION,
   holidayData: Array<string>,
 ): IDuration {
   const month = getMonth(date) + 1; // month return from 0 to 11
