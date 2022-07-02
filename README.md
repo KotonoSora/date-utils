@@ -5,6 +5,11 @@
 A small tool calculator calendar in month
 </p>
 
+[package]: https://www.npmjs.com/package/@kotonosora-tech/date-utils
+[version-badge]: https://img.shields.io/npm/v/@kotonosora-tech/date-utils
+[license]: https://github.com/KotonoSora/date-utils/blob/master/LICENSE
+[license-badge]: https://img.shields.io/github/license/KotonoSora/date-utils?color=b
+
 [![version][version-badge]][package]
 [![MIT License][license-badge]][license]
 
@@ -12,15 +17,14 @@ A small tool calculator calendar in month
 
 <hr />
 
-<!-- ## Table of Contents -->
 <details><summary>Table of Contents</summary><p>
 
 - [Installation](#installation)
 - [Features](#features)
   - [Get Key Month](#get-key-month)
   - [Get Page Month](#get-page-month)
-  - [Props](#Props)
-- [License](#license)
+- [Authors](#authors)
+- [LICENSE](#license)
 </p></details>
 
 ## Installation
@@ -41,7 +45,7 @@ yarn add @kotonosora-tech/date-utils
 getKeyMonthFromToDate(param);
 ```
 
-Example:
+<details><summary>Example:</summary><p>
 
 ```javascript
 import { getKeyMonthFromToDate, DateKeyFormat, MonthlyStartDateAction } from '@kotonosora-tech/date-utils';
@@ -68,6 +72,7 @@ const result = getKeyMonthFromToDate(
 }
 * /
 ```
+</p></details>
 
 ### Get Page Month
 
@@ -77,7 +82,7 @@ const result = getKeyMonthFromToDate(
 getPageMonth(param: IPageMonth): string[]
 ```
 
-Example:
+<details><summary>Example:</summary><p>
 
 ```javascript
 import {getPageMonth, FIRST_DAY_OF_WEEK} from "@kotonosora-tech/date-utils";
@@ -98,22 +103,10 @@ result = [
 ];
 * /
 ```
+</p></details>
 
-### Props
-
-| Props                  | Options                                                   | Default | Description                                          |
-| ---------------------- | --------------------------------------------------------- | ------- | ---------------------------------------------------- |
-| `firstDayOfWeek`       | `FIRST_DAY_OF_WEEK`: `MONDAY`, `SUNDAY`                   | `NULL`  | Day start of week                                    |
-| `fromDate`             | `string`                                                  | `NULL`  | Date start (format: `YYYY-MM-DD`)                    |
-| `toDate`               | `string`                                                  | `NULL`  | Date end (format: `YYYY-MM-DD`)                      |
-| `keyMonth`             | `string`                                                  | `NULL`  | `fromDate-toDate` (format: `YYYY-MM-DD-YYYY-MM-DD`)  |
-| `initDate`             | `string`                                                  | `NULL`  | Current date or selected date (format: `YYYY-MM-DD`) |
-| `holidayData`          | `string[]`                                                | `NULL`  | List holidays using (holiday format: `YYYY-MM-DD`)   |
-| `monthStartDate`       | `number`                                                  | `NULL`  | Date in month from `1` to `31`, last day is `32`     |
-| `monthStartDateAction` | `START_DATE_ACTION`: `NO_CHANGE`, `PREVIOUS`, `NEXT_WEEK` | `NULL`  | Date in month from `1` to `31`, last day is `32`     |
-
+## Authors
+[Nguyễn Duy Thắng](https://kotonosora.dev)
 
 ## License
-
-- **[MIT license](./LICENSE)**
-- Copyright (c) 2017-2022 [Nguyễn Duy Thắng](https://kotonosora.dev 'My CV Online').
+[MIT](LICENSE)
